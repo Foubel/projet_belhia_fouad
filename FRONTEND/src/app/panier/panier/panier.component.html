@@ -1,0 +1,6 @@
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center px-2" *ngFor="let item of (cart$ | async)">
+    {{ item.product.name }} ({{ item.product.price }} €)
+    <button class="btn btn-danger btn-sm" (click)="removeFromCart(item.cartId)">Supprimer</button>
+  </li>
+</ul>

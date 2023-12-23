@@ -1,0 +1,27 @@
+<app-recherche-produits (searchEvent)="applyFilters($event)"></app-recherche-produits>
+<div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Prix</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produit of (produits$ | async)">
+        <td>{{ produit.id }}</td>
+        <td>{{ produit.name }}</td>
+        <td>{{ produit.description }}</td>
+        <td>{{ produit.price }} €</td>
+        <td>
+          <button class="btn btn-primary" (click)="addToCart(produit)">
+            <i class="bi bi-cart"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

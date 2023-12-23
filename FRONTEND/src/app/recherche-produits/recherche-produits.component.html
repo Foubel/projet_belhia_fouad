@@ -1,0 +1,8 @@
+<div>
+    <input type="text" [(ngModel)]="searchTerms.id" placeholder="ID..." (input)="search()">
+    <input type="text" [(ngModel)]="searchTerms.name" placeholder="Nom..." (input)="search()">
+    <input type="text" [(ngModel)]="searchTerms.description" placeholder="Description..." (input)="search()">
+    <input type="text" [(ngModel)]="searchTerms.price" placeholder="Prix..." (input)="search()">
+    <button (click)="resetFilters()">Réinitialiser</button>
+</div>
+  
