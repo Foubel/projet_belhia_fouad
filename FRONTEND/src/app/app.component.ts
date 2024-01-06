@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,16 +13,22 @@ export class AppComponent implements OnInit {
   nom: string = '';
   prenom: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.isLogged = this.authService.isLogged();
+  routeIsActive(route: string) {
+    return this.router.url === route;
   }
 
-  onLoginSuccess(user: { nom: string; prenom: string }): void {
-    this.isLogged = true;
-    this.nom = user.nom.toUpperCase();
-    // première lettre en majuscule
-    this.prenom = user.prenom.charAt(0).toUpperCase() + user.prenom.slice(1);
+  ngOnInit(): void {
+    this.authService.isLoggedIn.subscribe(loggedIn => {
+      this.isLogged = loggedIn;
+    })
+    this.authService.nom.subscribe(nom => {
+      this.nom = nom;
+    })
+    this.authService.prenom.subscribe(prenom => {
+      this.prenom = prenom;
+    })
+    ;
   }
 }

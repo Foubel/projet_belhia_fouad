@@ -1,0 +1,51 @@
+<!-- inscription.component.html -->
+<div class="inscription-container">
+    <form (submit)="register()">
+        <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="text" class="form-control" [(ngModel)]="nom" name="nom" required>
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prénom :</label>
+            <input type="text" class="form-control" [(ngModel)]="prenom" name="prenom" required>
+        </div>
+        <div class="form-group">
+            <label for="adresse">Adresse :</label>
+            <input type="text" class="form-control" [(ngModel)]="adresse" name="adresse" required>
+        </div>
+        <div class="form-group">
+            <label for="codePostal">Code Postal :</label>
+            <input type="text" class="form-control" [(ngModel)]="codePostal" name="codePostal" required
+            placeholder="Exemple: 67200">
+        </div>
+        <div class="form-group">
+            <label for="ville">Ville :</label>
+            <input type="text" class="form-control" [(ngModel)]="ville" name="ville" required>
+        </div>
+        <div class="form-group">
+            <label for="telephone">Téléphone :</label>
+            <input type="text" class="form-control" [(ngModel)]="telephone" name="telephone" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="text" class="form-control" [(ngModel)]="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="sexe">Sexe :</label>
+            <select class="form-control" [(ngModel)]="sexe" name="sexe" required>
+                <option value="H">Homme</option>
+                <option value="F">Femme</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="login">Login :</label>
+            <input type="text" class="form-control" [(ngModel)]="login" name="login" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe :</label>
+            <input type="password" class="form-control" [(ngModel)]="password" name="password" required>
+        </div>
+      <button type="submit" class="btn btn-primary">S'inscrire</button>
+    </form>
+  </div>
+  

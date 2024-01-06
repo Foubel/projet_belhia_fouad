@@ -11,6 +11,8 @@ import { TetiereComponent } from './tetiere/tetiere.component';
 import { PanierModule } from './panier/panier.module';
 import { LoginComponent } from './login/login.component';
 import { ApiHttpInterceptor } from '../http-interceptor';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -19,14 +21,16 @@ import { ApiHttpInterceptor } from '../http-interceptor';
     ListeProduitsComponent,
     RechercheProduitsComponent,
     TetiereComponent,
-    LoginComponent
+    LoginComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     NgxsModule.forRoot([CartState]),
-    PanierModule
+    PanierModule,
+    AppRoutingModule,
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: ApiHttpInterceptor, multi: true }, ApiHttpInterceptor],
   bootstrap: [AppComponent],

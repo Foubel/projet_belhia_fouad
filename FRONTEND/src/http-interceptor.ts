@@ -34,6 +34,4 @@ export class ApiHttpInterceptor implements HttpInterceptor {
   setToken(token: String) {
     this.jwtToken = token;
   }
-
-  
 }

@@ -1,12 +1,75 @@
-<h1 class="text-center my-4">BELHIA Fouad: TP6</h1>
+<div class="container mt-5" style="padding-bottom: 50px;">
+  <!-- Logo et titre -->
+  <div class="row justify-content-center align-items-center">
+      <div class="col-auto">
+          <img src="assets/AmazMockt.png" alt="Logo AmazMock" class="img-fluid" width="100" height="100">
+      </div>
+      <div class="col-auto">
+          <h1 class="fw-bold text-center">AmazMock</h1>
+      </div>
+  </div>
 
-<div *ngIf="isLogged">
-    <app-tetiere></app-tetiere>
-    <h3>Bonjour {{ nom }} {{ prenom }}</h3>
-    <app-panier></app-panier>
-    <app-liste-produits></app-liste-produits>
-</div>
+  <div class="row text-center mt-3">
+    <!-- Chaque colonne contient une icône et un texte descriptif humoristique. -->
+    <div class="col">
+      <div class="feature">
+        <i class="bi bi-laptop fs-1 feature-icon"></i>
+        <h5>Un site web angular</h5>
+      </div>
+    </div>
+    <div class="col">
+      <div class="feature">
+        <i class="bi bi-basket3 fs-1 feature-icon"></i>
+        <h5>+ de 13 articles en vente (oui, on a compté)</h5>
+      </div>
+    </div>
+    <div class="col">
+      <div class="feature">
+        <i class="bi bi-emoji-smile fs-1 feature-icon"></i>
+        <h5>Des millions (non) de clients satisfaits</h5>
+      </div>
+    </div>
+    <div class="col">
+      <div class="feature">
+        <i class="bi bi-headset fs-1 feature-icon"></i>
+        <h5>Une équipe clientèle de 1 personne</h5>
+      </div>
+    </div>
+    <div class="col">
+      <div class="feature">
+        <i class="bi bi-credit-card fs-1 feature-icon"></i>
+        <h5>Paiement sécurisé, promis juré pas piraté</h5>
+      </div>
+    </div>
+  </div>
   
-<div *ngIf="!isLogged">
-    <app-login (loginSuccess)="onLoginSuccess($event)"></app-login>
+
+  <!-- Barre de navigation -->
+  <ng-container *ngIf="!isLogged">
+      <ul class="nav nav-tabs">
+          <li class="nav-item" [class.active]="routeIsActive('/login')">
+              <a class="nav-link" [routerLink]="['/login']">Connexion</a>
+          </li>
+          <li class="nav-item" [class.active]="routeIsActive('/register')">
+              <a class="nav-link" [routerLink]="['/register']">Inscription</a>
+          </li>
+      </ul>
+
+      <router-outlet></router-outlet>
+  </ng-container>
+  
+  <!-- Contenu pour les utilisateurs connectés -->
+  <ng-container *ngIf="isLogged">
+      <h3>Bonjour {{ nom }} {{ prenom }}</h3>
+      <app-tetiere></app-tetiere>
+      <app-panier></app-panier>
+      <app-liste-produits></app-liste-produits>
+  </ng-container>
+
+  <!-- Pied de page -->
+  <footer class="footer fixed-bottom bg-light">
+      <div class="container text-center">
+          <span class="text-muted">© 2024 BELHIA Fouad: Projet -  Le site qui ne vend rien et (ne vous fera pas perdre d'argent) !</span>
+      </div>
+  </footer>  
 </div>

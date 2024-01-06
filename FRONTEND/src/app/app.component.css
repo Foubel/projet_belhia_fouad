@@ -1,0 +1,61 @@
+.nav-item {
+    border-radius: 5px; 
+    box-shadow: 0 2px 3px rgba(0,0,0,.2); 
+    transition: all 0.3s ease-in-out; 
+  }
+
+  .nav-item:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,.3); 
+    transform: translateY(-2px); 
+  }
+
+  .nav-item a {
+    display: block;
+    padding: 10px 15px;
+    color: #333; 
+    text-decoration: none; 
+  }
+
+  .nav-item a:hover {
+    color: #0056b3; 
+  }
+
+  .nav-item.active {
+    color: #0056b3; 
+    background-color: #f8f9fa;
+  }
+
+  .nav-item.active a {
+    color: #0056b3; 
+  }
+
+  .feature {
+    padding: 20px;
+    margin: 10px 0;
+  }
+  
+  .feature-icon {
+    color: #333; /* Une couleur neutre qui s'harmonise avec la plupart des palettes */
+    margin-bottom: 10px;
+    transition: transform 0.3s ease; /* Animation fluide pour le survol */
+  }
+  
+  .feature-icon:hover {
+    transform: scale(1.1); /* Légère augmentation de taille au survol */
+  }
+  
+  .feature h5 {
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: color 0.3s ease; /* Transition fluide pour le changement de couleur */
+  }
+  
+  .feature:hover h5 {
+    color: #0056b3; /* Changement de couleur au survol */
+  }
+    
+
+
+

@@ -1,8 +1,9 @@
 <!-- tetiere.component.html -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <span class="navbar-text">
-      Articles dans le panier: {{ itemCount$ | async }}
-    </span>
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+  <span class="navbar-text">
+    Articles dans le panier: {{ itemCount$ | async }} | Total: {{ total$ | async }} €
+  </span>
+  <button (click)="payer()" class="btn btn-success">Payer</button>
 </nav>
-  
+
   

@@ -13,9 +13,7 @@ export class LoginComponent {
   nom: string = '';
   prenom: string = '';
 
-  @Output() loginSuccess = new EventEmitter<{ nom: string; prenom: string }>();
-
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   login(): void {
     this.authService.login(this.username, this.password).subscribe(
@@ -23,11 +21,17 @@ export class LoginComponent {
         this.nom = data.nom;
         this.prenom = data.prenom;
         console.log('Réponse de connexion', data);
-        this.loginSuccess.emit({ nom: this.nom, prenom: this.prenom });
+        this.authService.setLoggedIn(true);
+        this.authService.setUserData(this.nom, this.prenom);
       },
       error => {
+        this.onLoginFailure();
         console.error('Erreur de connexion', error);
       }
     );
+  }
+
+  onLoginFailure() {
+    alert('Erreur de connexion. Login ou mot de passe incorrect.');
   }
 }

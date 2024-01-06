@@ -16,6 +16,7 @@ export interface CartItem {
 export interface CartStateModel {
   items: CartItem[];
   lastCartId: number;
+  total: number;
 }
 
 export class AddToCart {
@@ -28,11 +29,16 @@ export class RemoveFromCart {
   constructor(public payload: number) {}
 }
 
+export class ClearCart {
+  static readonly type = '[Cart] Clear';
+}
+
 @State<CartStateModel>({
   name: 'cart',
   defaults: {
     items: [],
-    lastCartId: 0
+    lastCartId: 0,
+    total: 0
   }
 })
 @Injectable()
@@ -47,6 +53,12 @@ export class CartState {
     return state.items;
   }
 
+  @Selector()
+  static total(state: CartStateModel): number {
+    return state.total;
+  }
+
+
   @Action(AddToCart)
   add({ getState, patchState }: StateContext<CartStateModel>, { payload }: AddToCart): void {
     const state = getState();
@@ -57,14 +69,28 @@ export class CartState {
     };
     patchState({
       items: [...state.items, newItem],
-      lastCartId: cartId 
+      lastCartId: cartId ,
+      total: state.total + parseFloat(payload.price.toString()) 
     });
   }
   
   @Action(RemoveFromCart)
   remove({ getState, patchState }: StateContext<CartStateModel>, { payload }: RemoveFromCart): void {
+    const state = getState();
+    const updatedItems = state.items.filter(item => item.cartId !== payload);
+    const newTotal = updatedItems.reduce((acc, current) => acc + parseFloat(current.product.price.toString()), 0);
+
     patchState({
-      items: getState().items.filter(item => item.cartId !== payload) // Filtre par cartId.
+      items: updatedItems,
+      total: newTotal 
+    });
+  }
+
+  @Action(ClearCart)
+  clear({ patchState }: StateContext<CartStateModel>): void {
+    patchState({
+      items: [],
+      total: 0
     });
   }
 }
