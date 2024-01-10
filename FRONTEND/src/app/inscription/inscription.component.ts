@@ -23,7 +23,24 @@ export class InscriptionComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   register(): void {
-    const user = { nom: this.nom, prenom: this.prenom, adresse: this.adresse, codePostal: this.codePostal, ville: this.ville, email: this.email, sexe: this.sexe, login: this.login, password: this.password, telephone: this.telephone };
+    if (!this.login.trim() || !this.password.trim()) {
+      alert('Erreur : Le login et le mot de passe sont obligatoires.');
+      return;
+    }
+  
+    const user = { 
+      nom: this.nom, 
+      prenom: this.prenom, 
+      adresse: this.adresse, 
+      codePostal: this.codePostal, 
+      ville: this.ville, 
+      email: this.email, 
+      sexe: this.sexe, 
+      login: this.login, 
+      password: this.password, 
+      telephone: this.telephone 
+    };
+  
     this.authService.register(user).subscribe(
       data => {
         console.log('Inscription réussie', data);
@@ -35,6 +52,7 @@ export class InscriptionComponent {
       }
     );
   }
+  
 
   onRegisterSuccess() {
     alert('Inscription réussie. Vous pouvez maintenant vous connecter.');
